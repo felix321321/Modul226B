@@ -15,15 +15,15 @@ import javax.swing.border.EmptyBorder;
 
 public class DrawView extends JFrame implements ActionListener {
 
-	public String[] polygons = { "Circle", "Rectangle", "Oktagon" };
+	public String[] polygons = { "Rectangle", "Circle", "Oktagon" };
 	public JLabel applicationJLabel = new JLabel("Polygon Zeichner");
 	public JComboBox<String> polygonList = new JComboBox<String>(polygons);
 	public JPanel input1Panel = new JPanel();
-	public JLabel input1Text = new JLabel("");
-	public JTextField input1 = new JTextField("");
+	public JLabel input1Text = new JLabel("Höhe:");
+	public JTextField input1 = new JTextField("Hier Höhe eingeben");
 	public JPanel input2Panel = new JPanel();
-	public JLabel input2Text = new JLabel("");
-	public JTextField input2 = new JTextField("");
+	public JLabel input2Text = new JLabel("Breite:");
+	public JTextField input2 = new JTextField("Hier Breite eingeben");
 	public JButton drawButton = new JButton("Zeichnen!");
 
 	public DrawView() {
@@ -45,15 +45,21 @@ public class DrawView extends JFrame implements ActionListener {
 		applicationJLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		applicationJLabel.setBorder(new EmptyBorder(20, 20, 20, 20));
 		this.add(applicationJLabel);
+
 		((JLabel) polygonList.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
 		polygonList.setBorder(new EmptyBorder(20, 20, 20, 20));
+		polygonList.addActionListener(this);
 		this.add(polygonList);
+
 		input1Panel.setBorder(new EmptyBorder(20, 20, 20, 20));
 		this.add(input1Panel);
+
 		input2Panel.setBorder(new EmptyBorder(20, 20, 20, 20));
 		this.add(input2Panel);
+
 		drawButton.setHorizontalAlignment(SwingConstants.CENTER);
 		drawButton.setBorder(new EmptyBorder(20, 20, 20, 20));
+		drawButton.addActionListener(this);
 		this.add(drawButton);
 
 		this.setVisible(true);
@@ -62,10 +68,42 @@ public class DrawView extends JFrame implements ActionListener {
 		this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
 	}
 
+	public void selectPolygon(String s) {
+		switch (s) {
+		case "Rectangle": {
+			this.input1Text.setText("Höhe:");
+			this.input1.setText("Hier Höhe eingeben");
+			this.input2Panel.setVisible(true);
+			this.input2Text.setText("Breite:");
+			this.input2.setText("Hier Breite eingeben");
+			this.repaint();
+			break;
+		}
+		case "Circle": {
+			this.input1Text.setText("Radius:");
+			this.input1.setText("Hier Radius eingeben");
+			this.input2Panel.setVisible(false);
+			break;
+		}
+		case "Oktagon": {
+			this.input1Text.setText("Seitenlänge");
+			this.input1.setText("Hier Seitenlänge eingeben");
+			this.input2Panel.setVisible(false);
+			break;
+		}
+		default:
+			throw new IllegalArgumentException("Unexpected value: " + s);
+		}
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-
+		if (e.getSource() == polygonList) {
+			selectPolygon(polygonList.getSelectedItem().toString());
+		}
+//		if (e.getSource() == drawButton) {
+//			ResultView resultview = new Resultview(polygonList.getSelectedItem(), input1.getText(), input2.getText());
+//		}
 	}
 
 }
