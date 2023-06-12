@@ -72,22 +72,22 @@ public class DrawView extends JFrame implements ActionListener {
 		switch (s) {
 		case "Rectangle": {
 			this.input1Text.setText("Höhe:");
-			this.input1.setText("Hier Höhe eingeben");
+			this.input1.setText("Hier Höhe eingeben (Zwischen 100-400 empfohlen)");
 			this.input2Panel.setVisible(true);
 			this.input2Text.setText("Breite:");
-			this.input2.setText("Hier Breite eingeben");
+			this.input2.setText("Hier Breite eingeben (Zwischen 100-400 empfohlen)");
 			this.repaint();
 			break;
 		}
 		case "Circle": {
 			this.input1Text.setText("Radius:");
-			this.input1.setText("Hier Radius eingeben");
+			this.input1.setText("Hier Radius eingeben (Zwischen 100-400 empfohlen)");
 			this.input2Panel.setVisible(false);
 			break;
 		}
 		case "Oktagon": {
 			this.input1Text.setText("Seitenlänge");
-			this.input1.setText("Hier Seitenlänge eingeben");
+			this.input1.setText("Hier Seitenlänge eingeben (Zwischen 50-100 empfohlen)");
 			this.input2Panel.setVisible(false);
 			break;
 		}
@@ -101,9 +101,11 @@ public class DrawView extends JFrame implements ActionListener {
 		if (e.getSource() == polygonList) {
 			selectPolygon(polygonList.getSelectedItem().toString());
 		}
-//		if (e.getSource() == drawButton) {
-//			ResultView resultview = new Resultview(polygonList.getSelectedItem(), input1.getText(), input2.getText());
-//		}
+		if (e.getSource() == drawButton) {
+			ResultView resultview = new ResultView(polygonList.getSelectedItem().toString(), input1.getText(),
+					input2.getText());
+			this.dispose();
+		}
 	}
 
 }
