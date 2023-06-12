@@ -10,6 +10,10 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import logic.Circle;
+import logic.Oktagon;
+import logic.Rectangle;
+
 public class ResultView extends JPanel {
 
 	public JFrame frame = new JFrame();
@@ -46,10 +50,51 @@ public class ResultView extends JPanel {
 
 		shape = s;
 		this.value1 = Integer.parseInt(value1);
-		if (value2.equals("")) {
-
-		} else {
+		try {
 			this.value2 = Integer.parseInt(value2);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		scope.setText(scope.getText() + calculateScope());
+		surfaceArea.setText(surfaceArea.getText() + calculateSurfaceArea());
+	}
+
+	public double calculateScope() {
+		switch (this.shape) {
+		case "Rectangle": {
+			Rectangle rectangle = new Rectangle(value1, value2);
+			return rectangle.calculateScope();
+		}
+		case "Circle": {
+			Circle circle = new Circle(value1);
+			return circle.calculateScope();
+		}
+		case "Oktagon": {
+			Oktagon oktagon = new Oktagon(value1);
+			return oktagon.calculateScope();
+		}
+		default:
+			return -1;
+		}
+	}
+
+	public double calculateSurfaceArea() {
+		switch (this.shape) {
+		case "Rectangle": {
+			Rectangle rectangle = new Rectangle(value1, value2);
+			return rectangle.calculateSurfaceArea();
+		}
+		case "Circle": {
+			Circle circle = new Circle(value1);
+			return circle.calculateSurfaceArea();
+		}
+		case "Oktagon": {
+			Oktagon oktagon = new Oktagon(value1);
+			return oktagon.calculateSurfaceArea();
+		}
+		default:
+			return -1;
 		}
 	}
 

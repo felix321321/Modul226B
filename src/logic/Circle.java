@@ -5,19 +5,19 @@ public class Circle implements Polygon {
 	public static final double pi = 3.14;
 	private double width;
 
-	public Circle(double width) {
-		this.width = width;
+	public Circle(double radius) {
+		this.width = radius * 2;
 	}
 
 	@Override
 	public double calculateSurfaceArea() {
-		double surfaceArea = width * pi;
+		double surfaceArea = width / 2 * width / 2 * pi;
 		return surfaceArea;
 	}
 
 	@Override
 	public double calculateScope() {
-		double scope = pi * 2 * (width / 2);
+		double scope = pi * width;
 		return scope;
 	}
 
