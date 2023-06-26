@@ -3,6 +3,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import logic.Circle;
+import logic.Hexagon;
 import logic.Oktagon;
 import logic.Rectangle;
 
@@ -42,6 +43,18 @@ class CalculationTest {
 	void test6() {
 		Oktagon oktagon = new Oktagon(3);
 		assertEquals(oktagon.calculateSurfaceArea(), 36);
+	}
+
+	@Test
+	void test7() {
+		Hexagon hexagon = new Hexagon(3);
+		assertEquals(hexagon.calculateScope(), 18);
+	}
+
+	@Test
+	void test8() {
+		Hexagon hexagon = new Hexagon(3);
+		assertEquals(hexagon.calculateSurfaceArea(), 23.382685902195);
 	}
 
 }
