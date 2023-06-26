@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.*;
+import java.awt.event.*;
 
 public class DrawView extends JFrame implements ActionListener {
 

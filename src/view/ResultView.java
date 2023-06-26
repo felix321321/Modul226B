@@ -13,6 +13,8 @@ import javax.swing.border.EmptyBorder;
 import logic.Circle;
 import logic.Oktagon;
 import logic.Rectangle;
+import javax.swing.*;
+import java.awt.*;
 
 public class ResultView extends JPanel {
 
