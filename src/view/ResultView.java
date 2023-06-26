@@ -11,10 +11,9 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import logic.Circle;
+import logic.Hexagon;
 import logic.Oktagon;
 import logic.Rectangle;
-import javax.swing.*;
-import java.awt.*;
 
 public class ResultView extends JPanel {
 
@@ -76,6 +75,10 @@ public class ResultView extends JPanel {
 			Oktagon oktagon = new Oktagon(value1);
 			return oktagon.calculateScope();
 		}
+		case "Hexagon": {
+			Hexagon hexagon = new Hexagon(value1);
+			return hexagon.calculateScope();
+		}
 		default:
 			return -1;
 		}
@@ -94,6 +97,10 @@ public class ResultView extends JPanel {
 		case "Oktagon": {
 			Oktagon oktagon = new Oktagon(value1);
 			return oktagon.calculateSurfaceArea();
+		}
+		case "Hexagon": {
+			Hexagon hexagon = new Hexagon(value1);
+			return hexagon.calculateSurfaceArea();
 		}
 		default:
 			return -1;
@@ -119,6 +126,11 @@ public class ResultView extends JPanel {
 					new int[] { value1 * 4, value1 * 3, value1 * 2, value1, value1, value1 * 2, value1 * 3,
 							value1 * 4 },
 					8);
+			break;
+		}
+		case "Hexagon": {
+			g.drawPolygon(new int[] { value1 * 2, value1 * 3, value1 * 4, value1 * 3, value1 * 2, value1 },
+					new int[] { value1 * 3, value1 * 3, value1 * 2, value1, value1, value1 * 2 }, 6);
 			break;
 		}
 		default:

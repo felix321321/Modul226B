@@ -12,12 +12,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import javax.swing.*;
-import java.awt.event.*;
 
 public class DrawView extends JFrame implements ActionListener {
 
-	public String[] polygons = { "Rectangle", "Circle", "Oktagon" };
+	public String[] polygons = { "Rectangle", "Circle", "Oktagon", "Hexagon" };
 	public JLabel applicationJLabel = new JLabel("Polygon Zeichner");
 	public JComboBox<String> polygonList = new JComboBox<String>(polygons);
 	public JPanel input1Panel = new JPanel();
@@ -88,6 +86,12 @@ public class DrawView extends JFrame implements ActionListener {
 			break;
 		}
 		case "Oktagon": {
+			this.input1Text.setText("Seitenlänge");
+			this.input1.setText("Hier Seitenlänge eingeben (Zwischen 50-100 empfohlen)");
+			this.input2Panel.setVisible(false);
+			break;
+		}
+		case "Hexagon": {
 			this.input1Text.setText("Seitenlänge");
 			this.input1.setText("Hier Seitenlänge eingeben (Zwischen 50-100 empfohlen)");
 			this.input2Panel.setVisible(false);
